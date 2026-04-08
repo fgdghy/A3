@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crm-service
+  namespace: bookstore-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crm-service
+  template:
+    metadata:
+      labels:
+        app: crm-service
+    spec:
+      containers:
+      - name: crm-service
+        image: linyul/crm-service:v1
+        imagePullPolicy: Always
+        env:
+        - name: KAFKA_SERVERS
+          value: "98.88.99.206:9092,34.195.107.7:9092,54.221.160.63:9092"
+        - name: SMTP_USER
+          value: "lilinyu12345@gmail.com"
+        - name: SMTP_PASS
+          value: "xgfv oxch ckny knna"

@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mobile-app-bff
+  namespace: bookstore-ns
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mobile-app-bff
+  template:
+    metadata:
+      labels:
+        app: mobile-app-bff
+    spec:
+      containers:
+      - name: mobile-app-bff
+        image: linyul/mobile-bff:v1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: URL_BASE_BOOK
+          value: "http://book-service:3000"
+        - name: URL_BASE_CUSTOMER
+          value: "http://customer-service:3000"
+        livenessProbe:
+          httpGet:
+            path: /status
+            port: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mobile-app-bff-lb
+  namespace: bookstore-ns
+spec:
+  type: LoadBalancer
+  selector:
+    app: mobile-app-bff
+  ports:
+    - port: 80
+      targetPort: 3000

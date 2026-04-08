@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-service
+  namespace: bookstore-ns
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: customer-service
+  template:
+    metadata:
+      labels:
+        app: customer-service
+    spec:
+      containers:
+      - name: customer-service
+        image: linyul/customer-service:v1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DB_HOST
+          value: "bookstore-db-dev-instance1.c2qxlb8d3arf.us-east-1.rds.amazonaws.com"
+        - name: DB_USER
+          value: "admin"       
+        - name: DB_PASSWORD
+          value: "12345678"
+        - name: DB_NAME
+          value: "customers_db"
+        - name: KAFKA_SERVERS
+          value: "98.88.99.206:9092,34.195.107.7:9092,54.221.160.63:9092"
+        - name: KAFKA_TOPIC
+          value: "linyul.customer.evt"
+        livenessProbe:
+          httpGet:
+            path: /status
+            port: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: customer-service
+  namespace: bookstore-ns
+spec:
+  selector:
+    app: customer-service
+  ports:
+    - port: 80
+      targetPort: 3000
