@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: customer-service
-        image: linyul/customer-service:v1
+        image: linyul/customer-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 3000

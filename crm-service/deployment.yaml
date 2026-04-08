@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: crm-service
-        image: linyul/crm-service:v1
+        image: linyul/crm-service:latest
         imagePullPolicy: Always
         env:
         - name: KAFKA_SERVERS

@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: book-service
-        image: linyul/book-service:v1
+        image: linyul/book-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
