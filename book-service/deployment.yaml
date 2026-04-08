@@ -34,8 +34,9 @@ spec:
           httpGet:
             path: /status
             port: 3000
-          initialDelaySeconds: 30
+          initialDelaySeconds: 100
           periodSeconds: 10
+          failureThreshold: 3
         volumeMounts:
         - name: cb-vol
           mountPath: /data/circuit-breaker
