@@ -5,7 +5,7 @@ DOCKER_USER="linyul"  # 替换为你的 Docker Hub 用户名
 TAG="latest"          # 你也可以手动改为 "v1", "v2" 等
 
 # 定义需要构建的服务文件夹名称
-SERVICES=("book-service" "customer-service" "crm-service" "web-bff" "mobile-bff")
+SERVICES=("book-service" "customer-service" "crm-service" "web-bff" "mobile-bff" "recommendation-service")
 
 echo "🚀 开始自动化构建与推送流程..."
 

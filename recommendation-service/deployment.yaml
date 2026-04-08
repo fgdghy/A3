@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendation-service
+  namespace: bookstore-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recommendation-service
+  template:
+    metadata:
+      labels:
+        app: recommendation-service
+    spec:
+      containers:
+      - name: recommendation-service
+        image: pmerson/book-recommendations-ms
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: cb-volume
+          mountPath: /data/circuit-breaker
+      volumes:
+      - name: cb-volume
+        emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: recommendation-service
+  namespace: bookstore-ns
+spec:
+  selector:
+    app: recommendation-service
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
