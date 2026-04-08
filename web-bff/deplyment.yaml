@@ -23,7 +23,7 @@ spec:
         - name: URL_BASE_BOOK
           value: "http://book-service:3000"
         - name: URL_BASE_CUSTOMER
-          value: "http://customer-service:3000"
+          value: "http://customer-service:80"
         livenessProbe:
           httpGet:
             path: /status
