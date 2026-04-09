@@ -8,7 +8,7 @@ load_dotenv()
 app = Flask(__name__)
 
 BOOK_SERVICE_URL = os.environ.get('URL_BASE_BOOK', 'http://book-service:3000').rstrip('/')
-CUSTOMER_SERVICE_URL = os.environ.get('URL_BASE_CUSTOMER', 'http://customer-service:3000').rstrip('/')
+CUSTOMER_SERVICE_URL = os.environ.get('URL_BASE_CUSTOMER', 'http://customer-service:80').rstrip('/')
 
 def verify_jwt(auth_header):
     if not auth_header or not auth_header.startswith("Bearer "):
