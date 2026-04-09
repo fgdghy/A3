@@ -3,7 +3,7 @@
 # --- 配置区 ---
 NAMESPACE="bookstore-ns"
 # 定义需要部署的服务文件夹（确保名字和 Deployment 中的 app 标签一致）
-SERVICES=("book-service" "customer-service" "crm-service" "web-bff" "mobile-bff")
+SERVICES=("book-service" "customer-service" "crm-service" "web-app-bff" "mobile-app-bff")
 
 echo "🚀 开始在 Namespace: $NAMESPACE 中执行深度部署..."
 
