@@ -23,7 +23,7 @@ spec:
         - name: DB_HOST
           value: "bookstore-db-dev-instance1.c2qxlb8d3arf.us-east-1.rds.amazonaws.com"
         - name: DB_NAME
-          value: "books_db"
+          value: "customers_db"
         - name: DB_USER
           value: "admin" 
         - name: DB_PASSWORD
