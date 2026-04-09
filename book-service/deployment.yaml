@@ -23,11 +23,13 @@ spec:
         - name: DB_HOST
           value: "bookstore-db-dev-instance1.c2qxlb8d3arf.us-east-1.rds.amazonaws.com"
         - name: DB_NAME
-          value: "customers_db"
+          value: "books_db"
         - name: DB_USER
-          value: "admin" 
+          value: "admin"
         - name: DB_PASSWORD
-          value: "123456789"
+          value: "12345678"
+        - name: DB_NAME
+          value: "customers_db"
         - name: URL_BASE_RECOMMENDATION
           value: "http://34.195.107.7"
         livenessProbe:
