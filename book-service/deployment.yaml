@@ -30,7 +30,7 @@ spec:
           value: "books_db"
         - name: URL_BASE_RECOMMENDATION
           value: "http://34.195.107.7"
-        - name: GEMINI_KEY
+        - name: GEMINI_KEY_Book
           value: "AIzaSyBFARm2lS-BHbePLYanshkbRMZmUGQ0JYw"
         livenessProbe:
           httpGet:
