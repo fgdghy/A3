@@ -19,6 +19,9 @@ DB_CONFIG = {
     'database': os.environ.get('DB_NAME', 'books_db') 
 }
 
+GEMINI_API_KEY = os.environ.get('GEMINI_KEY', '')
+GEMINI_URL = f"https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key={GEMINI_API_KEY}"
+
 RECOMMENDATION_SERVICE_URL = os.environ.get('URL_BASE_RECOMMENDATION')
 CB_STATE_FILE = "/data/circuit-breaker/state.txt" 
 
@@ -41,7 +44,7 @@ def generate_summary(title, author):
     prompt = f"Provide a detailed 500-word summary of the book '{title}' by {author}."
     payload = {"contents": [{"parts": [{"text": prompt}]}]}
     try:
-        r = requests.post("", json=payload, timeout=5)
+        r = requests.post(GEMINI_URL, json=payload, timeout=100)
         if r.status_code == 200:
             return r.json()['candidates'][0]['content']['parts'][0]['text']
     except:

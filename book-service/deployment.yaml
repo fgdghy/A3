@@ -27,7 +27,7 @@ spec:
         - name: DB_PASSWORD
           value: "12345678"
         - name: DB_NAME
-          value: "customers_db"
+          value: "books_db"
         - name: URL_BASE_RECOMMENDATION
           value: "http://34.195.107.7"
         - name: GEMINI_KEY
