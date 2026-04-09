@@ -19,8 +19,17 @@ spec:
         imagePullPolicy: Always
         env:
         - name: KAFKA_SERVERS
-          value: "98.88.99.206:9092,34.195.107.7:9092,54.221.160.63:9092"
+          valueFrom:
+            configMapKeyRef:
+              name: bookstore-config
+              key: kafka-servers
         - name: SMTP_USER
-          value: "lilinyu12345@gmail.com"
+          valueFrom:
+            secretKeyRef:
+              name: bookstore-secrets
+              key: smtp-user
         - name: SMTP_PASS
-          value: "xgfv oxch ckny knna"
+          valueFrom:
+            secretKeyRef:
+              name: bookstore-secrets
+              key: smtp-pass

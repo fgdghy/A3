@@ -21,17 +21,35 @@ spec:
         - containerPort: 3000
         env:
         - name: DB_HOST
-          value: "bookstore-db-dev-instance1.c2qxlb8d3arf.us-east-1.rds.amazonaws.com"
-        - name: DB_USER
-          value: "admin"
-        - name: DB_PASSWORD
-          value: "12345678"
+          valueFrom:
+            configMapKeyRef:
+              name: bookstore-config
+              key: db-host
         - name: DB_NAME
-          value: "customers_db"
+          valueFrom:
+            configMapKeyRef:
+              name: bookstore-config
+              key: db-name
         - name: KAFKA_SERVERS
-          value: "98.88.99.206:9092,34.195.107.7:9092,54.221.160.63:9092"
+          valueFrom:
+            configMapKeyRef:
+              name: bookstore-config
+              key: kafka-servers
         - name: KAFKA_TOPIC
-          value: "linyul.customer.evt"
+          valueFrom:
+            configMapKeyRef:
+              name: bookstore-config
+              key: kafka-topic
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: bookstore-secrets
+              key: db-user
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: bookstore-secrets
+              key: db-password
         livenessProbe:
           httpGet:
             path: /status
