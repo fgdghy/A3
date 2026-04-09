@@ -30,6 +30,8 @@ spec:
           value: "customers_db"
         - name: URL_BASE_RECOMMENDATION
           value: "http://34.195.107.7"
+        - name: GEMINI_KEY
+          value: "AIzaSyCt119_Balh-IlY5w3mCC7HvA-lR2jJK30"
         livenessProbe:
           httpGet:
             path: /status
